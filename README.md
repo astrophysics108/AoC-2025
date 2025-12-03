@@ -1,2 +1,2 @@
 # AoC-2025
-Advent of Code 2025 is almost here!!!
+My solutions for the 2025 AoC :)
