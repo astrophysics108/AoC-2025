@@ -49,12 +49,14 @@ def get_button_presses(line):
         buttons[i] = new_button
 
 
-    buttons = np.array(buttons).T
+    buttons_new = np.array(buttons).T
 
     constraint = LinearConstraint(buttons, joltage_to_press, joltage_to_press)
-    minim=np.ones(len(buttons))
-    inequalities = Bounds([0] * len(buttons), [np.inf]*len(buttons))
+    minim=np.ones(buttons_new.shape[1])
+    inequalities = Bounds([0] * buttons_new.shape[1], [np.inf]*buttons_new.shape[1])
     more_constraints_yayayayay = np.ones(len(buttons), dtype=int)
+    print("hi")
+    print(buttons_new.shape, len(joltage_to_press), len(minim))
     res = milp(c=minim, constraints=[constraint], bounds=inequalities, integrality=more_constraints_yayayayay)
     return res.fun
 
