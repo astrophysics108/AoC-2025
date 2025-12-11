@@ -3,11 +3,11 @@ from scipy.optimize import milp, LinearConstraint, Bounds
 import numpy as np
 import collections as col
 
-data = """[.##.] (3) (1,3) (2) (2,3) (0,2) (0,1) {3,5,4,7}
-[...#.] (0,2,3,4) (2,3) (0,4) (0,1,2) (1,2,3,4) {7,5,12,7,2}
-[.###.#] (0,1,2,3,4) (0,3,4) (0,1,2,4,5) (1,2) {10,11,11,5,10,5}""".splitlines()
+# data = """[.##.] (3) (1,3) (2) (2,3) (0,2) (0,1) {3,5,4,7}
+# [...#.] (0,2,3,4) (2,3) (0,4) (0,1,2) (1,2,3,4) {7,5,12,7,2}
+# [.###.#] (0,1,2,3,4) (0,3,4) (0,1,2,4,5) (1,2) {10,11,11,5,10,5}""".splitlines()
 
-# data = [el.strip() for el in open("day10/input.txt", "r").readlines()]
+data = [el.strip() for el in open("day10/input.txt", "r").readlines()]
 
 def get_button_presses(line):
     line = line.split()
@@ -55,8 +55,8 @@ def get_button_presses(line):
     minim=np.ones(buttons_new.shape[1])
     inequalities = Bounds([0] * buttons_new.shape[1], [np.inf]*buttons_new.shape[1])
     more_constraints_yayayayay = np.ones(len(buttons), dtype=int)
-    print("hi")
-    print(buttons_new.shape, len(joltage_to_press), len(minim))
+    # print("hi")
+    # print(buttons_new.shape, len(joltage_to_press), len(minim))
     res = milp(c=minim, constraints=[constraint], bounds=inequalities, integrality=more_constraints_yayayayay)
     return res.fun
 
