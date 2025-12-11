@@ -51,7 +51,7 @@ def get_button_presses(line):
 
     buttons_new = np.array(buttons).T
 
-    constraint = LinearConstraint(buttons, joltage_to_press, joltage_to_press)
+    constraint = LinearConstraint(buttons_new, joltage_to_press, joltage_to_press)
     minim=np.ones(buttons_new.shape[1])
     inequalities = Bounds([0] * buttons_new.shape[1], [np.inf]*buttons_new.shape[1])
     more_constraints_yayayayay = np.ones(len(buttons), dtype=int)
